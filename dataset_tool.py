@@ -522,12 +522,13 @@ def create_from_images(tfrecord_dir, image_dir, shuffle):
             img = np.asarray(PIL.Image.open(image_filenames[order[idx]]))
             if channels == 1:
                 img = img[np.newaxis, :, :] # HW => CHW
+                tfr.add_image(img)
             else:
                 try:
                     img = img.transpose([2, 0, 1]) # HWC => CHW
+                    tfr.add_image(img)
                 except:
                     pass
-            tfr.add_image(img)
 
 #----------------------------------------------------------------------------
 
