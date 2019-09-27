@@ -41,7 +41,7 @@ def main():
         images = Gs.run(latents, None, truncation_psi=0.7, randomize_noise=True, output_transform=fmt)
 
         os.makedirs(config.result_dir, exist_ok=True)
-        png_filename = os.path.join(config.result_dir + '/finished', 'example' + str(x) + '.png')
+        png_filename = os.path.join(config.result_dir + '/generated',  str(x).zfill(4) + '.png')
         PIL.Image.fromarray(images[0], 'RGB').save(png_filename)
 
 if __name__ == "__main__":
